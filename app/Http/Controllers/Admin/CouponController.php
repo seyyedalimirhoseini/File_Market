@@ -27,16 +27,14 @@ class CouponController extends Controller
         $this->validate($request, [
             'name' => 'required|unique:coupons,name',
             'percent'=>'required|between:1,99',
-            'expiry_date'=>'required|date_format:Y/m/d'
+            'expiry_date'=>'required'
         ], [
             'name.required' => 'وارد کردن نام دسته بندی الزامی می باشد.',
             'name.unique'=>'نام باید منحصر به فرد باشد.',
             'percent.required'=>'وارد کردن درصد تخفیف الزامی می باشد.',
             'percent.between'=>'درصد باید بین 1 تا 99 باشد.',
             'expiry_date.required'=>'وارد کردن تاریخ انقضا الزامی می باشد.',
-            'expiry_date.date_format'=>'فرمت تاریخ صحیح نمی باشد.',
-//            'expiry_date.date'=>'باید فرمت تاریخ باشد',
-
+       
         ]);
         if(empty($request['status'])){
             $request['status']=0;
@@ -57,15 +55,14 @@ class CouponController extends Controller
         $this->validate($request, [
             'name' => 'required|unique:coupons,name,'.$coupon->id,
             'percent'=>'required|between:1,99',
-            'expiry_date'=>'required|date_format:Y/m/d'
+            'expiry_date'=>'required'
         ], [
             'name.required' => 'وارد کردن نام دسته بندی الزامی می باشد.',
             'name.unique'=>'نام باید منحصر به فرد باشد.',
             'percent.required'=>'وارد کردن درصد تخفیف الزامی می باشد.',
             'percent.between'=>'درصد باید بین 1 تا 99 باشد.',
             'expiry_date.required'=>'وارد کردن تاریخ انقضا الزامی می باشد.',
-            'expiry_date.date_format'=>'فرمت تاریخ صحیح نمی باشد.',
-//            'expiry_date.date'=>'باید فرمت تاریخ باشد',
+      
 
         ]);
 
