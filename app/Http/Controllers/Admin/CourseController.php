@@ -101,7 +101,7 @@ class CourseController extends Controller
             }
 
             $categories=Category::all();
-            $courses=Course::all();
+           $courses=Course::where('id','!=',$course->id)->get();
             return view('Admin.course.edit',compact('course','courses','categories','array'));
         }
         else{
