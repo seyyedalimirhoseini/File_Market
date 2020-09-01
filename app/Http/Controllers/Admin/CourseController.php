@@ -141,7 +141,7 @@ class CourseController extends Controller
         }else{
             $uploadImage=$request->image;
         }
-//        DB::table('sub_courses')->where('course_id',$course->id)->delete();
+       DB::table('sub_courses')->where('course_id',$course->id)->delete();
         if(isset($request->courses))
         {
             for($i=0 ; $i<=count($request->courses) ;$i++)
@@ -152,7 +152,7 @@ class CourseController extends Controller
                    'subCourse_id'=>intval($request['courses'][$i]),
                ];
             //    dd($data);
-            SubCourse::where('course_id',$course->id)->update($data);
+            SubCourse::create($data);
             }
         }
         $course->update(array_merge($request->all(),['image'=>$uploadImage]));
